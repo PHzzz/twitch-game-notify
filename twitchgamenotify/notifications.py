@@ -11,8 +11,10 @@ from twitchgamenotify.version import NAME
 
 
 # ANSI escape sequence for bold text
-ANSI_BOLD = "\033[1m"
-ANSI_END = "\033[0m"
+# ANSI_BOLD = "\033[1m"
+ANSI_BOLD = ""
+# ANSI_END = "\033[0m"
+ANSI_END = ""
 
 
 def print_notification_to_terminal(streamer_name, stream_title, game_name):
@@ -23,10 +25,10 @@ def print_notification_to_terminal(streamer_name, stream_title, game_name):
         stream_title: A string containing the title of the stream.
         game_name: A string containing the name of the game.
     """
-    print(ANSI_BOLD + streamer_name + ANSI_END, end="")
-    print(" @ " + datetime.datetime.now().isoformat())
-    print("Streaming %s" % game_name)
-    print("Title: %s" % stream_title)
+    print(ANSI_BOLD + streamer_name + ANSI_END, end="", flush=True)
+    print(" @ " + datetime.datetime.now().isoformat(), flush=True)
+    print("Streaming %s" % game_name, flush=True)
+    print("Title: %s" % stream_title, flush=True)
 
 
 def send_notification_to_dbus(streamer_name, stream_title, game_name):
